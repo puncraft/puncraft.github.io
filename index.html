@@ -22,73 +22,73 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
+      padding: 24px 20px;
     }
 
     .hero {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 28px;
     }
 
     .avatar {
-      width: 80px;
-      height: 80px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       background: var(--surface);
       border: 2px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 24px;
-      font-size: 2rem;
+      margin: 0 auto 10px;
+      font-size: 1.5rem;
     }
 
     h1 {
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-size: clamp(1.4rem, 4vw, 2rem);
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 12px;
+      margin-bottom: 6px;
     }
 
     .tagline {
-      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      font-size: 0.9rem;
       color: var(--muted);
       font-style: italic;
     }
 
     .projects {
       width: 100%;
-      max-width: 560px;
+      max-width: 640px;
     }
 
     .projects h2 {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--muted);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       text-align: center;
     }
 
     .project-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
     }
 
     .project {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 16px 20px;
+      padding: 12px 14px;
       text-decoration: none;
       color: var(--text);
       transition: border-color 0.2s, transform 0.15s;
@@ -100,7 +100,7 @@
     }
 
     .project-icon {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       flex-shrink: 0;
     }
 
@@ -108,36 +108,19 @@
 
     .project-name {
       font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 3px;
+      font-size: 0.95rem;
+      margin-bottom: 2px;
     }
 
     .project-desc {
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       color: var(--muted);
     }
 
     .project-arrow {
       color: var(--muted);
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
-
-    .github-link {
-      margin-top: 48px;
-      text-align: center;
-    }
-
-    .github-link a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-    }
-
-    .github-link a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -149,14 +132,14 @@
   </div>
 
   <div class="projects">
-    <h2>Projects</h2>
+    <h2>Projects &amp; Links</h2>
     <div class="project-list">
 
       <a class="project" href="https://qr.puncraft.ca">
         <div class="project-icon">▦</div>
         <div class="project-info">
           <div class="project-name">Quicher</div>
-          <div class="project-desc">QR code &amp; barcode generator and scanner. No ads, no nonsense.</div>
+          <div class="project-desc">QR &amp; barcode generator. No ads.</div>
         </div>
         <div class="project-arrow">→</div>
       </a>
@@ -184,6 +167,24 @@
         <div class="project-info">
           <div class="project-name">ChatGPT</div>
           <div class="project-desc">AI assistant.</div>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+
+      <a class="project" href="https://www.youtube.com">
+        <div class="project-icon">▶️</div>
+        <div class="project-info">
+          <div class="project-name">YouTube</div>
+          <div class="project-desc">Video.</div>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+
+      <a class="project" href="https://www.google.ca/maps">
+        <div class="project-icon">🗺️</div>
+        <div class="project-info">
+          <div class="project-name">Google Maps</div>
+          <div class="project-desc">Canada.</div>
         </div>
         <div class="project-arrow">→</div>
       </a>
