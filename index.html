@@ -121,6 +121,90 @@
       color: var(--muted);
       font-size: 1rem;
     }
+
+    /* AI Hub compound tile */
+    .ai-hub {
+      display: block;
+      padding: 0;
+      overflow: visible;
+      position: relative;
+      cursor: default;
+      text-decoration: none;
+    }
+
+    .ai-hub-trigger {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+    }
+
+    .ai-chevron {
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+
+    .ai-hub:hover .ai-chevron {
+      transform: rotate(180deg);
+    }
+
+    .ai-hub-menu {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: -1px;
+      right: -1px;
+      background: #1c2230;
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 20;
+    }
+
+    .ai-hub:hover .ai-hub-menu {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    .ai-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 500;
+      border-left: 3px solid var(--ai-color, var(--border));
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .ai-option + .ai-option {
+      border-top: 1px solid var(--border);
+    }
+
+    .ai-option:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--ai-color);
+    }
+
+    .ai-option .ai-label {
+      flex: 1;
+    }
+
+    .ai-option .ai-go {
+      color: var(--muted);
+      font-size: 0.85rem;
+      transition: color 0.15s;
+    }
+
+    .ai-option:hover .ai-go {
+      color: var(--ai-color);
+    }
   </style>
 </head>
 <body>
@@ -162,14 +246,33 @@
         <div class="project-arrow">→</div>
       </a>
 
-      <a class="project" href="https://chatgpt.com">
-        <div class="project-icon">🤖</div>
-        <div class="project-info">
-          <div class="project-name">ChatGPT</div>
-          <div class="project-desc">AI assistant.</div>
+      <div class="project ai-hub">
+        <div class="ai-hub-trigger">
+          <div class="project-icon">🧠</div>
+          <div class="project-info">
+            <div class="project-name">AI Chat</div>
+            <div class="project-desc">ChatGPT · Claude · Gemini</div>
+          </div>
+          <div class="project-arrow ai-chevron">▾</div>
         </div>
-        <div class="project-arrow">→</div>
-      </a>
+        <div class="ai-hub-menu">
+          <a href="https://chatgpt.com" target="_blank" class="ai-option" style="--ai-color: #10a37f">
+            <span>🤖</span>
+            <span class="ai-label">ChatGPT</span>
+            <span class="ai-go">→</span>
+          </a>
+          <a href="https://claude.ai/new" target="_blank" class="ai-option" style="--ai-color: #cc785c">
+            <span>✦</span>
+            <span class="ai-label">Claude</span>
+            <span class="ai-go">→</span>
+          </a>
+          <a href="https://gemini.google.com/" target="_blank" class="ai-option" style="--ai-color: #4285f4">
+            <span>✦</span>
+            <span class="ai-label">Gemini</span>
+            <span class="ai-go">→</span>
+          </a>
+        </div>
+      </div>
 
       <a class="project" href="https://www.youtube.com">
         <div class="project-icon">▶️</div>
