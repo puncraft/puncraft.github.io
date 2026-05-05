@@ -22,12 +22,11 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 24px 20px;
+      padding: 48px 20px 64px;
     }
 
     .hero {
@@ -61,12 +60,14 @@
       font-style: italic;
     }
 
-    .projects {
+    /* ── Shared section wrapper ── */
+    .section {
       width: 100%;
       max-width: 640px;
+      margin-bottom: 32px;
     }
 
-    .projects h2 {
+    .section-label {
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -75,6 +76,7 @@
       text-align: center;
     }
 
+    /* ── Personal links grid ── */
     .project-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -122,88 +124,53 @@
       font-size: 1rem;
     }
 
-    /* AI Hub compound tile */
+    /* ── AI Hub inline card (personal links) ── */
     .ai-hub {
-      display: block;
-      padding: 0;
-      overflow: visible;
-      position: relative;
-      cursor: default;
-      text-decoration: none;
-    }
-
-    .ai-hub-trigger {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 14px;
-    }
-
-    .ai-chevron {
-      transition: transform 0.2s;
-      display: inline-block;
-    }
-
-    .ai-hub:hover .ai-chevron {
-      transform: rotate(180deg);
-    }
-
-    .ai-hub-menu::before {
-      content: '';
-      position: absolute;
-      top: -8px;
-      left: 0;
-      right: 0;
-      height: 8px;
-    }
-
-    .ai-hub-menu {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: -1px;
-      right: -1px;
-      background: #1c2230;
-      border: 1px solid var(--accent);
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
-      opacity: 0;
-      transform: translateY(-6px);
-      pointer-events: none;
-      transition: opacity 0.2s, transform 0.2s;
-      z-index: 20;
     }
 
-    .ai-hub:hover .ai-hub-menu {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: all;
+    .ai-hub-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ai-hub-header .project-icon { font-size: 1rem; }
+
+    .ai-hub-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--muted);
     }
 
     .ai-option {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 10px 14px;
+      padding: 9px 14px;
       text-decoration: none;
       color: var(--text);
       font-size: 0.88rem;
       font-weight: 500;
-      border-left: 3px solid var(--ai-color, var(--border));
+      border-left: 3px solid var(--ai-color);
       transition: background 0.15s, color 0.15s;
     }
 
-    .ai-option + .ai-option {
-      border-top: 1px solid var(--border);
-    }
+    .ai-option + .ai-option { border-top: 1px solid var(--border); }
 
     .ai-option:hover {
       background: rgba(255,255,255,0.05);
       color: var(--ai-color);
     }
 
-    .ai-option .ai-label {
-      flex: 1;
-    }
+    .ai-option .ai-label { flex: 1; }
 
     .ai-option .ai-go {
       color: var(--muted);
@@ -211,8 +178,70 @@
       transition: color 0.15s;
     }
 
-    .ai-option:hover .ai-go {
-      color: var(--ai-color);
+    .ai-option:hover .ai-go { color: var(--ai-color); }
+
+    /* ── AI Tools directory ── */
+    .ai-categories {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ai-category {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--cat-color);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .ai-cat-header {
+      padding: 8px 14px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--cat-color);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ai-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.15s;
+    }
+
+    .ai-link + .ai-link { border-top: 1px solid var(--border); }
+
+    .ai-link:hover { background: rgba(255,255,255,0.04); }
+
+    .ai-link:hover .ai-link-name { color: var(--cat-color); }
+
+    .ai-link-info { flex: 1; min-width: 0; }
+
+    .ai-link-name {
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 1px;
+      transition: color 0.15s;
+    }
+
+    .ai-link-desc {
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ai-link-arrow {
+      color: var(--muted);
+      font-size: 0.85rem;
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -224,8 +253,9 @@
     <p class="tagline">Currently: building something.</p>
   </div>
 
-  <div class="projects">
-    <h2>Projects &amp; Links</h2>
+  <!-- Personal links -->
+  <div class="section">
+    <div class="section-label">Projects &amp; Links</div>
     <div class="project-list">
 
       <a class="project" href="https://qr.puncraft.ca">
@@ -255,32 +285,26 @@
         <div class="project-arrow">→</div>
       </a>
 
-      <div class="project ai-hub">
-        <div class="ai-hub-trigger">
+      <div class="ai-hub">
+        <div class="ai-hub-header">
           <div class="project-icon">🧠</div>
-          <div class="project-info">
-            <div class="project-name">AI Chat</div>
-            <div class="project-desc">ChatGPT · Claude · Gemini</div>
-          </div>
-          <div class="project-arrow ai-chevron">▾</div>
+          <div class="ai-hub-title">AI Chat</div>
         </div>
-        <div class="ai-hub-menu">
-          <a href="https://chatgpt.com" target="_blank" class="ai-option" style="--ai-color: #10a37f">
-            <span>🤖</span>
-            <span class="ai-label">ChatGPT</span>
-            <span class="ai-go">→</span>
-          </a>
-          <a href="https://claude.ai/new" target="_blank" class="ai-option" style="--ai-color: #cc785c">
-            <span>✦</span>
-            <span class="ai-label">Claude</span>
-            <span class="ai-go">→</span>
-          </a>
-          <a href="https://gemini.google.com/" target="_blank" class="ai-option" style="--ai-color: #4285f4">
-            <span>✦</span>
-            <span class="ai-label">Gemini</span>
-            <span class="ai-go">→</span>
-          </a>
-        </div>
+        <a href="https://chatgpt.com" target="_blank" class="ai-option" style="--ai-color: #10a37f">
+          <span>🤖</span>
+          <span class="ai-label">ChatGPT</span>
+          <span class="ai-go">→</span>
+        </a>
+        <a href="https://claude.ai/new" target="_blank" class="ai-option" style="--ai-color: #cc785c">
+          <span>✦</span>
+          <span class="ai-label">Claude</span>
+          <span class="ai-go">→</span>
+        </a>
+        <a href="https://gemini.google.com/" target="_blank" class="ai-option" style="--ai-color: #4285f4">
+          <span>✦</span>
+          <span class="ai-label">Gemini</span>
+          <span class="ai-go">→</span>
+        </a>
       </div>
 
       <a class="project" href="https://www.youtube.com">
@@ -310,6 +334,181 @@
         <div class="project-arrow">→</div>
       </a>
 
+
+    </div>
+  </div>
+
+  <!-- AI Tools directory -->
+  <div class="section">
+    <div class="section-label">AI Tools</div>
+    <div class="ai-categories">
+
+      <div class="ai-category" style="--cat-color: #58a6ff">
+        <div class="ai-cat-header">Chat &amp; Assistants</div>
+        <a href="https://claude.ai" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Claude</div>
+            <div class="ai-link-desc">Best for long-context reasoning, writing, and code</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://chatgpt.com" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">ChatGPT</div>
+            <div class="ai-link-desc">GPT-4o + plugins; huge ecosystem</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://gemini.google.com" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Gemini</div>
+            <div class="ai-link-desc">Google's flagship; great multimodal + search grounding</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://www.perplexity.ai" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Perplexity</div>
+            <div class="ai-link-desc">AI search with cited live-web answers</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+      </div>
+
+      <div class="ai-category" style="--cat-color: #3fb950">
+        <div class="ai-cat-header">Code</div>
+        <a href="https://github.com/features/copilot" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">GitHub Copilot</div>
+            <div class="ai-link-desc">Inline AI pair-programmer for VS Code &amp; JetBrains</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://cursor.com" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Cursor</div>
+            <div class="ai-link-desc">AI-native code editor; agent mode for full-file edits</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://v0.dev" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">v0 by Vercel</div>
+            <div class="ai-link-desc">Generate React/Tailwind UI from a prompt</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://aider.chat" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Aider</div>
+            <div class="ai-link-desc">Terminal-based AI coding; great with Claude/GPT-4</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+      </div>
+
+      <div class="ai-category" style="--cat-color: #bc8cff">
+        <div class="ai-cat-header">Image &amp; Creative</div>
+        <a href="https://www.midjourney.com" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Midjourney</div>
+            <div class="ai-link-desc">Still the quality king for art/photo-real images</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://ideogram.ai" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Ideogram</div>
+            <div class="ai-link-desc">Best-in-class text rendering inside images</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://pollinations.ai" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Pollinations</div>
+            <div class="ai-link-desc">Free, no login image &amp; audio gen via simple API</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+      </div>
+
+      <div class="ai-category" style="--cat-color: #f0883e">
+        <div class="ai-cat-header">Research &amp; Productivity</div>
+        <a href="https://notebooklm.google.com" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">NotebookLM</div>
+            <div class="ai-link-desc">Chat with your own docs; great audio overviews</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://www.elicit.com" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Elicit</div>
+            <div class="ai-link-desc">AI research assistant for academic papers</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://otter.ai" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Otter.ai</div>
+            <div class="ai-link-desc">Meeting transcription + AI summaries</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://www.notion.com/product/ai" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Notion AI</div>
+            <div class="ai-link-desc">AI baked into your wiki/docs workspace</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+      </div>
+
+      <div class="ai-category" style="--cat-color: #7d8590">
+        <div class="ai-cat-header">Developer &amp; Platform</div>
+        <a href="https://console.anthropic.com" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Anthropic Console</div>
+            <div class="ai-link-desc">API keys, prompt workbench, usage dashboard</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://platform.openai.com" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">OpenAI Platform</div>
+            <div class="ai-link-desc">GPT API playground, fine-tuning, assistants API</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://huggingface.co" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Hugging Face</div>
+            <div class="ai-link-desc">Open-source models, datasets, Spaces demos</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://aistudio.google.com" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Google AI Studio</div>
+            <div class="ai-link-desc">Free Gemini API playground; generous free tier</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://chat.lmsys.org" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">LMSys Chatbot Arena</div>
+            <div class="ai-link-desc">Blind A/B model battles; live leaderboard</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+        <a href="https://replicate.com" target="_blank" class="ai-link">
+          <div class="ai-link-info">
+            <div class="ai-link-name">Replicate</div>
+            <div class="ai-link-desc">Run any open-source model via API, pay per second</div>
+          </div>
+          <div class="ai-link-arrow">→</div>
+        </a>
+      </div>
 
     </div>
   </div>
