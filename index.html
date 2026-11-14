@@ -97,7 +97,7 @@
     }
 
     /* Odd one out gets the full row */
-    .project:last-child { grid-column: 1 / -1; }
+    .project:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
     .project-icon {
       font-size: 1.3rem;
@@ -162,6 +162,15 @@
         <div class="project-info">
           <div class="project-name">Gravity Wheel</div>
           <div class="project-desc">Star gravity sim. Tweakable.</div>
+        </div>
+        <div class="project-arrow">→</div>
+      </a>
+
+      <a class="project" href="/typingtutor/">
+        <div class="project-icon">🚀</div>
+        <div class="project-info">
+          <div class="project-name">Space Cadet Typing</div>
+          <div class="project-desc">Typing game for kids. Build a rocket.</div>
         </div>
         <div class="project-arrow">→</div>
       </a>
