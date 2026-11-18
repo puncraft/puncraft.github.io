@@ -129,72 +129,71 @@
 </head>
 <body>
 
+  <!--
+    Don't edit this file to change the page content.
+    All text and links live in config.js.
+  -->
+
   <div class="hero">
-    <div class="avatar">👨‍💻</div>
-    <h1>Puncraft.ca</h1>
-    <p class="tagline">Currently: building something.</p>
+    <div class="avatar" id="avatar"></div>
+    <h1 id="title"></h1>
+    <p class="tagline" id="tagline"></p>
   </div>
 
   <div class="section">
-    <div class="section-label">Projects &amp; Links</div>
-    <div class="project-list">
-
-      <a class="project" href="https://qr.puncraft.ca">
-        <div class="project-icon">▦</div>
-        <div class="project-info">
-          <div class="project-name">Quicher</div>
-          <div class="project-desc">QR &amp; barcode generator. No ads.</div>
-        </div>
-        <div class="project-arrow">→</div>
-      </a>
-
-      <a class="project" href="http://diskstation:5031">
-        <div class="project-icon">🍽️</div>
-        <div class="project-info">
-          <div class="project-name">Feed The Week</div>
-          <div class="project-desc">Meal planning. Local LAN only.</div>
-        </div>
-        <div class="project-arrow">→</div>
-      </a>
-
-      <a class="project" href="/gravitywheel/">
-        <div class="project-icon">🎡</div>
-        <div class="project-info">
-          <div class="project-name">Gravity Wheel</div>
-          <div class="project-desc">Star gravity sim. Tweakable.</div>
-        </div>
-        <div class="project-arrow">→</div>
-      </a>
-
-      <a class="project" href="/typingtutor/">
-        <div class="project-icon">🚀</div>
-        <div class="project-info">
-          <div class="project-name">Space Cadet Typing</div>
-          <div class="project-desc">Typing game for kids. Build a rocket.</div>
-        </div>
-        <div class="project-arrow">→</div>
-      </a>
-
-      <a class="project" href="http://diskstation:3000">
-        <div class="project-icon">🍵</div>
-        <div class="project-info">
-          <div class="project-name">Gitea</div>
-          <div class="project-desc">Git hosting. Local LAN only.</div>
-        </div>
-        <div class="project-arrow">→</div>
-      </a>
-
-      <a class="project" href="https://notebooklm.google.com" target="_blank">
-        <div class="project-icon">📓</div>
-        <div class="project-info">
-          <div class="project-name">NotebookLM</div>
-          <div class="project-desc">Research notebook grounded in your own sources.</div>
-        </div>
-        <div class="project-arrow">→</div>
-      </a>
-
-    </div>
+    <div class="section-label" id="section-label"></div>
+    <div class="project-list" id="project-list"></div>
   </div>
+
+  <script src="config.js"></script>
+  <script>
+    (function () {
+      var site = window.SITE;
+      if (!site) {
+        document.body.innerHTML =
+          '<p style="color:#f85149;text-align:center">' +
+          'config.js failed to load. Check it for a missing comma or quote.</p>';
+        return;
+      }
+
+      function setText(id, value) {
+        document.getElementById(id).textContent = value || '';
+      }
+
+      document.title = site.title || '';
+      var meta = document.querySelector('meta[name="description"]');
+      if (meta) meta.setAttribute('content', site.tagline || '');
+
+      setText('title', site.title);
+      setText('tagline', site.tagline);
+      setText('avatar', site.avatar);
+      setText('section-label', site.sectionLabel);
+
+      function el(tag, className, text) {
+        var node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text != null) node.textContent = text;
+        return node;
+      }
+
+      var list = document.getElementById('project-list');
+      (site.links || []).forEach(function (link) {
+        var a = el('a', 'project');
+        a.href = link.url || '#';
+        if (link.newTab) {
+          a.target = '_blank';
+          a.rel = 'noopener';
+        }
+        var info = el('div', 'project-info');
+        info.appendChild(el('div', 'project-name', link.name));
+        info.appendChild(el('div', 'project-desc', link.description));
+        a.appendChild(el('div', 'project-icon', link.icon));
+        a.appendChild(info);
+        a.appendChild(el('div', 'project-arrow', '→'));
+        list.appendChild(a);
+      });
+    })();
+  </script>
 
 </body>
 </html>
