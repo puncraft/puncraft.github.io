@@ -42,11 +42,5 @@ window.SITE = {
       icon: "🚀",
       url: "/typingtutor/",
     },
-    {
-      name: "Gitea",
-      description: "Git hosting. Local LAN only.",
-      icon: "🍵",
-      url: "http://diskstation:3000",
-    },
   ],
 };
